@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:uuid/uuid.dart';
 
 class FirestoreServices {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
@@ -9,6 +13,24 @@ class FirestoreServices {
   Future<QuerySnapshot<Map<String, dynamic>>> getCollection(
       String collectionName) {
     return _firebaseFirestore.collection(collectionName).get();
+  }
+
+  Future<void> writeCollection(
+      String collectionName, Map<String, dynamic> document) async {
+    final CollectionReference collection =
+        _firebaseFirestore.collection(collectionName);
+
+    collection
+        .add(document)
+        .then((value) => "Document Added")
+        .catchError((e) => throw e);
+  }
+
+  Future<void> deleteDocument(String collectionName, String documentId) async {
+    final CollectionReference collection =
+        _firebaseFirestore.collection(collectionName);
+
+    await collection.doc(documentId).delete();
   }
 }
 
@@ -46,7 +68,20 @@ class FirebaseAuthenticationServices {
   }
 }
 
+class CloudStorageServices {
+  final _firebaseStorage = FirebaseStorage.instance;
+
+  Future<String> uploadFile(File file) async {
+    final task = _firebaseStorage.ref().child(const Uuid().v4()).putFile(file);
+    String downloadURL = "";
+    await task.whenComplete(() async {
+      downloadURL = await task.snapshot.ref.getDownloadURL();
+    });
+    return downloadURL;
+  }
+}
+
 FirebaseAuthenticationServices firebaseAuthenticationServices =
     FirebaseAuthenticationServices();
-
 FirestoreServices firestoreServices = FirestoreServices();
+CloudStorageServices cloudStorageServices = CloudStorageServices();

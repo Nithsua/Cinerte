@@ -7,10 +7,14 @@ import 'package:cinerte/views/login_view.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      // systemNavigationBarColor: Color(0xFF1D1D29),
       systemNavigationBarColor: Colors.transparent,
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light));
+      statusBarIconBrightness: Brightness.light,
+    ),
+  );
   runApp(const App());
 }
 
@@ -25,6 +29,20 @@ class App extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.done) {
             return MaterialApp(
               theme: ThemeData(
+                  buttonTheme: Theme.of(context).buttonTheme.copyWith(
+                        buttonColor: const Color(0xFF31323F),
+                      ),
+                  floatingActionButtonTheme:
+                      Theme.of(context).floatingActionButtonTheme.copyWith(
+                            backgroundColor: const Color(0xFF31323F),
+                            foregroundColor: Colors.white,
+                          ),
+                  cardColor: const Color(0xFF31323F),
+                  cardTheme: CardTheme(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                    elevation: 5.0,
+                  ),
                   appBarTheme: const AppBarTheme(
                       backgroundColor: Color(0xFF1D1D29), elevation: 0.0),
                   brightness: Brightness.dark,
