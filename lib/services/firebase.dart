@@ -20,6 +20,10 @@ class FirebaseAuthenticationServices {
     return _firebaseAuth.userChanges();
   }
 
+  User? getUser() {
+    return _firebaseAuth.currentUser;
+  }
+
   Future<void> signInWithGoogle() async {
     try {
       final _googleUser = await _googleSignIn.signIn();
