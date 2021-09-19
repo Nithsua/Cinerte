@@ -1,4 +1,4 @@
-# movie_curation
+# Cinerte
 
 A new Flutter project.
 

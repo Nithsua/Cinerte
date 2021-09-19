@@ -1,4 +1,4 @@
-package com.example.movie_curation
+package com.nithsua.cinerte
 
 import io.flutter.embedding.android.FlutterActivity
 

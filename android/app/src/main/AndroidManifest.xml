@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.movie_curation">
+    package="com.nithsua.cinerte">
    <application
-        android:label="movie_curation"
+        android:label="Cinerte"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
