@@ -64,6 +64,28 @@ class App extends StatelessWidget {
             );
           } else {
             return MaterialApp(
+              theme: ThemeData(
+                  buttonTheme: Theme.of(context).buttonTheme.copyWith(
+                        buttonColor: const Color(0xFF31323F),
+                      ),
+                  floatingActionButtonTheme:
+                      Theme.of(context).floatingActionButtonTheme.copyWith(
+                            backgroundColor: const Color(0xFF31323F),
+                            foregroundColor: Colors.white,
+                          ),
+                  cardColor: const Color(0xFF31323F),
+                  cardTheme: CardTheme(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                    elevation: 5.0,
+                  ),
+                  appBarTheme: const AppBarTheme(
+                      backgroundColor: Color(0xFF1D1D29), elevation: 0.0),
+                  brightness: Brightness.dark,
+                  backgroundColor: const Color(0xFF1D1D29),
+                  scaffoldBackgroundColor: const Color(0xFF1D1D29),
+                  textTheme: Theme.of(context).textTheme.apply(
+                      bodyColor: Colors.white, displayColor: Colors.white)),
               home: Scaffold(
                 body: Container(),
               ),

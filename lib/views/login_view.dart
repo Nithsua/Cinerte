@@ -72,7 +72,7 @@ class LoginView extends StatelessWidget {
                         padding: EdgeInsets.all(14.0),
                         child: Text(
                           "Login",
-                          style: TextStyle(fontSize: 20.0),
+                          style: TextStyle(fontSize: 20.0, color: Colors.white),
                         ),
                       ),
                     ),
